@@ -1,0 +1,47 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "dungeon_level.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "dungeon_level.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 248,
+                "y": 92
+            }
+        },
+        "dungeon_level.tmx#dungeon_tileset": {
+            "scaleInDock": 2
+        }
+    },
+    "last.exportedFilePath": "/home/ryan/Documents/Side_Scroller/tilemaps",
+    "last.imagePath": "/home/ryan/Documents/Side_Scroller/tilesets/Dungeon Tile Set",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.layerDataFormat": null,
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 50,
+    "openFiles": [
+        "dungeon_level.tmx"
+    ],
+    "project": "side-scroller.tiled-project",
+    "recentFiles": [
+        "dungeon_level.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
