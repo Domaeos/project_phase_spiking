@@ -1,8 +1,8 @@
 const config = {
     type: Phaser.AUTO,
     parent: 'game',
-    width: 1000,
-    heigth: 800,
+    width: window.innerWidth,
+    heigth: window.innerHeight,
     scale: {
         mode: Phaser.Scale.RESIZE,
         autoCenter: Phaser.Scale.CENTER_BOTH
@@ -28,8 +28,12 @@ function preload() {
     this.load.image('tiles', "/tilesets/dungeon_tileset.png");
     this.load.tilemapTiledJSON('map', 'tilemaps/dungeon_level.json');
 
-    this.cameras.main.setZoom(2.5, 2.5);
+    this.cameras.main.setZoom(3, 3);
     this.load.atlas('player', 'sprites/Ninja/ninja.png', 'sprites/Ninja/ninja.json');
+    this.load.atlas('enemy_test', 'sprites/Skeleton_Archer/skeleton_archer.png', 'sprites/Skeleton_Archer/skeleton_archer.json')
+
+
+    this.load.atlas('skeleton_spearman', 'sprites/Skeleton_Spearman/spearman_atlas.png', 'sprites/Skeleton_Spearman/spearman_atlas.json')
 }
 
 function create() {
@@ -49,12 +53,37 @@ function create() {
     this.player.setCollideWorldBounds(true);
     this.cameras.main.startFollow(this.player);
 
+    // enemy archer
+    this.enemy_test = this.physics.add.sprite(5, 90, 'enemy_test', '')
+    this.physics.add.collider(this.enemy_test, platforms);
+    this.enemy_test.setCollideWorldBounds(true);
+    this.enemy_test.body.setSize(35, 65);
+    this.enemy_test.setScale(0.4)
+    this.enemy_test.body.setOffset(50, 60);
 
+    // // spearman:
+    // this.skeleton_spearman = this.physics.add.sprite(5, 90, 'skeleton_spearman', 'skeleton_spearman_idle-1.png')
+    // this.physics.add.collider(this.skeleton_spearman, platforms);
+    // this.skeleton_spearman.setCollideWorldBounds(true);
+
+
+    //enemy eyesight
+    this.graphics = this.add.graphics();
+
+    this.line = new Phaser.Geom.Line(this.enemy_test.x,
+        this.enemy_test.y,
+        this.player.x,
+        this.player.y);
+
+
+    // game keys
     this.cursors = cursors = this.input.keyboard.addKeys({
         'up': Phaser.Input.Keyboard.KeyCodes.W, 'down': Phaser.Input.Keyboard.KeyCodes.S,
         'left': Phaser.Input.Keyboard.KeyCodes.A, 'right': Phaser.Input.Keyboard.KeyCodes.D, 'space': Phaser.Input.Keyboard.KeyCodes.SPACE,
         'melee': Phaser.Input.Keyboard.KeyCodes.M
     });
+
+    // player anims
     this.anims.create({
         key: 'walk',
         frames: this.anims.generateFrameNames('player', {
@@ -110,15 +139,73 @@ function create() {
         frameRate: 20,
         repeat: 0
     });
+    // skeleton archer anims
+    this.anims.create({
+        key: 'skeleton-archer-attack',
+        frames: this.anims.generateFrameNames('enemy_test', {
+            prefix: 'skeleton_archer_attack_shoot_1-',
+            suffix: '.png',
+            start: 1,
+            end: 15,
+        }),
+        frameRate: 15,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'skeleton-archer-idle',
+        frames: this.anims.generateFrameNames('enemy_test', {
+            prefix: 'skeleton_archer_idle-',
+            suffix: '.png',
+            start: 1,
+            end: 7,
+        }),
+        frameRate: 10,
+        repeat: 0
+    });
+
+    // skeleton spearman anims
+    this.anims.create({
+        key: 'skeleton-spearman-idle',
+        frames: this.anims.generateFrameNames('skeleton_spearman', {
+            prefix: 'skeleton_spearman_idle-',
+            suffix: '.png',
+            start: 1,
+            end: 7,
+        }),
+        frameRate: 10,
+        repeat: 0
+    })
+
 }
 
 function update() {
+    //debug 
+    // console.log(this.line)
+    this.line.x1 = this.enemy_test.x,
+    this.line.y1 = this.enemy_test.y,
+    this.line.x2 = this.player.x,
+    this.line.y2 = this.player.y
+    this.graphics.lineStyle(2, 0xffff00);
+    this.graphics.strokeLineShape(this.line)
+
+    // check enemy radius and attack
+    if (Phaser.Geom.Line.Length(this.line) < 150) {
+        this.enemy_test.play('skeleton-archer-attack', true)
+    } else {
+        this.enemy_test.play('skeleton-archer-idle', true)
+    }
+
+
     if (this.cursors.left.isDown) {
+        if (this.player.body.onFloor()) {
+            this.player.play('walk', true);
+        }
         this.player.setVelocityX(-200);
-        this.player.play('walk', true);
     } else if (this.cursors.right.isDown) {
+        if (this.player.body.onFloor()) {
+            this.player.play('walk', true);
+        }
         this.player.setVelocityX(200);
-        this.player.play('walk', true);
     } else {
         if (this.player.body.onFloor() && this.player.anims.getCurrentKey() !== 'attack') {
             this.player.setVelocityX(0)
@@ -139,4 +226,5 @@ function update() {
     if (this.cursors.melee.isDown) {
         this.player.play('attack', false);
     }
+    this.graphics.clear();
 }

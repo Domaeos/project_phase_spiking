@@ -1,0 +1,167 @@
+{
+	"textures": [
+		{
+			"image": "spearman_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 34,
+				"h": 340
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "skeleton_spearman_idle-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 1,
+						"y": 86,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 1,
+						"y": 86,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 1,
+						"y": 171,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 1,
+						"y": 171,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 1,
+						"y": 256,
+						"w": 32,
+						"h": 83
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:c146410a35c7a867c4a38a6237e40c94:033663e5b87dd0fa279397216266bf39:c277bd35491c7ca01b9b6fb4742fff02$"
+	}
+}
